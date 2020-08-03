@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+<!-- Just a bit of fun -->
+
+{% block headimage %}
+  {% load static %}
+  <img src="{% static "top_banner.png" %}"  alt="Angie Hollingworth S324155">
+{% endblock headimage %}
+
+{% block content %}
+  <h1>Seriously?</h1>
+  <p>You didn't think I would actually implement a search function??</p>
+  <br>
+  <p>That's like cheating!! Go and choose a <em><a href="{% url 'movies' %}" style = "color: inherit">movie from the list</a></em> if you need more information. &#x1f644;</p>
+  {% if message %}
+    <br>
+    <br>
+    <p>And what are you hoping to learn by searching for <b>{{ message }}</b> anyway?</p>
+    <p>You could always try somewhere like
+      <em><a href = 'https://google.com/search?q={{message}}' target="_blank" style = "color: inherit" >google</a></em>
+      if you are really keen. They are kind of experts on searching...</p>
+  {% endif %}
+{% endblock content %}
+
+
+{% block fixed_footer%}
+    <footer class="page-footer font-small blue fixed-bottom">
+{% endblock fixed_footer %}

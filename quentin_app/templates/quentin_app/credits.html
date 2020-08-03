@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+<!-- Reference list -->
+
+{% block custom_title %}
+  <title>Reference List</title>
+{% endblock custom_title %}
+
+{% block content %}
+  <h1>References</h1>
+  {% for credits in cred %}
+    <p>{{ credits }}</p>
+  {% endfor %}
+{% endblock content %}

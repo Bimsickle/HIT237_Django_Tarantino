@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+<!-- Movie table -->
+
+{% block custom_title %}
+  <title>Movies</title>
+{% endblock custom_title %}
+
+{% block content %}
+  <h1>Quentin Tarantino Movies</h1>
+  <table style="width:100%" class="table table-bordered">
+    <tr align = center>
+      <th>Movie Title</th>
+      <th>Plot</th>
+    </tr>
+    {% for film in thelist %}
+      <tr>
+        <td> <a href="{% url 'film' film.movie_id %}" style = "color: inherit";>{{ film.title }}</a></td>
+        <td >{{ film.plot_trimmed }}</td>
+      </tr>
+    {% endfor %}
+  </table>
+
+{% endblock content %}

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+<!-- Data dictionary model page -->
+
+{% block custom_title %}
+  <title>Data Model</title>
+{% endblock custom_title %}
+
+{% block content %}
+  <h1>Data Model</h1>
+  <table style="width:100%" class="table table-bordered">
+    <tr>
+      <th>Name of field</th>
+      <th>Purpose</th>
+      <th>Data Type</th>
+      <th>Validation/ Constraints</th>
+    </tr>
+    {%  for item in data_model %}
+      <tr>
+        <td >{{ item.name }}</td>
+        <td >{{ item.purpose }}</td>
+        <td >{{ item.type }}</td>
+        <td >{{ item.constraint }}</td>
+      </tr>
+    {% endfor %}
+  </table>
+{% endblock content %}

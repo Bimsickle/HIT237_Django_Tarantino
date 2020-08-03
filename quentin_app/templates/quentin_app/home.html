@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+<!-- Home page -->
+
+{% block headimage %}
+  {% load static %}
+  <img src="{% static "top_banner.png" %}"  alt="Angie Hollingworth S324155">
+{% endblock headimage %}
+
+{% block content %}
+  <!-- Heading includes youtube link to Pulp Fiction Ezekiel 25:17 scence -->
+  <a href="https://youtu.be/wtf5ZoFiKm0?t=101" style ="color: inherit" target="_blank" title="Strong violence warning! External link"><h1>About</h1></a>
+    {% for sentence in intro %}
+      <p>{{ sentence }}</p>
+    {% endfor %}
+{% endblock content %}

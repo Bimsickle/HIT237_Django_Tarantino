@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+<!-- This page is the movie details for each film in the list -->
+
+{% block custom_title %}
+  <title>{{ movie.title }}</title>
+{% endblock custom_title %}
+
+{% block content %}
+  {% if not movie.movie_id %}
+    <p>Invalid search, please try again.</p>
+  {% else %}
+    <h1>{{ movie.title }}</h1>
+    <div class="card-deck" >
+      <div class="card mb-3" style="max-width: 540px; border: none;">
+        <div class="row no-gutters">
+          <div class="col-md-4">
+            <img src="{{movie.cover}}" class="card-img" alt="{{movie.title}}">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">Released in {{ movie.release_year }}</h5>
+              <p class="card-text"><small class="text-muted">Genre: {{ movie.genre }}</small></p>
+              <p class="card-text">{{ movie.title }} cost US${{ movie.budget }} to film,
+                                    generated US${{ movie.box_office }} at the box office and made a profit of US${{ movie.profit }}.
+                                    <br>The movie runs for {{ movie.running_time }} minutes.</p>
+              <a href = "{{movie.review_imdb}}" target="_blank" button type="button" class="btn btn-light">IMDb score: {{ movie.imdb }}</a>
+              <p class="card-text"><small class="text-muted"><em>Image linked from IMDb</em></small></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card" style="width: 18rem; border: none;">
+        <div class="card-body">
+          <h6 class="card-subtitle mb-2 text-muted">Plot</h6>
+          <p class="card-text">{{ movie.plot }}</p>
+          <p class="card-text"><small class="text-muted">{{ movie.ref }}</small></p>
+        </div>
+      </div>
+    </div>
+    <div class="card" style=" border: none;">
+      <div class="card-body">
+        <h6 class="card-subtitle mb-2 text-muted">Actors</h6>
+        <p class="card-text">Listed in order of credits for the film are: <br>{% for actor in movie.lead_actors %} {{actor}}, {% endfor %} plus many more.</p>
+        <p class="card-text">Quentin Tarantino <em><b>{% if movie.cameo %}did{% else %}did not{% endif %}</b></em> play a cameo role in {{ movie.title }}.</p>
+      </div>
+    </div>
+  {% endif %}
+{% endblock content %}
